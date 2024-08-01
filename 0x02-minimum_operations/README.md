@@ -1,1 +1,1 @@
-My_0x02-minimum_operations_projects
+0x02-minimum_operations

@@ -1,30 +1,29 @@
 #!/usr/bin/python3
+
 """
-Minimum Operations
+    Method that determines the number of minmum operations given n characters
 """
-
-import math
-
-
-def factors(n):
-    """factors of n number"""
-    mylist = []
-    while n % 2 == 0:
-        mylist.append(2)
-        n = n / 2
-    for i in range(3, int(math.sqrt(n)) + 1, 2):
-        while n % i == 0:
-            mylist.append(i)
-            n = n / i
-    if n > 2:
-        mylist.append(n)
-    return mylist
 
 
 def minOperations(n):
-    """calculate the minimum operations"""
-    if type(n) != int or n < 2:
-        return 0
-    else:
-        numOperations = sum(factors(n))
-        return int(numOperations)
+    """
+        A function that calculates the fewest number of operations
+        needed to give a result of exactly n H characters in a file
+        args: n: Number of characters to be displayed
+        return:
+               number of min operations
+    """
+
+    now = 1
+    start = 0
+    counter = 0
+    while now < n:
+        remainder = n - now
+        if (remainder % now == 0):
+            start = now
+            now += start
+            counter += 2
+        else:
+            now += start
+            counter += 1
+    return counter
